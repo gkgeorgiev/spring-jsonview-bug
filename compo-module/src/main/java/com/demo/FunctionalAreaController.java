@@ -2,9 +2,12 @@
 package com.demo;
 
 import com.demo.AppURLs;
+import com.demo.dto.ComponentDto;
 import com.demo.dto.FunctionalAreaDto;
 import com.demo.dto.Views;
 import com.fasterxml.jackson.annotation.JsonView;
+
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,12 +28,12 @@ public class FunctionalAreaController {
 
   
     @GetMapping
- //   @JsonView({Views.FunctionalArea.class})
+//    @JsonView({Views.FunctionalArea.class})
     public List<FunctionalAreaDto> getAllFunctionalAreas() {
-        return functionalAreaService.getAll()
-            .stream()
-            .map(mapper::toDto)
-            .collect(Collectors.toList());
+        FunctionalAreaDto fa = FunctionalAreaDto.builder().id(1l).build();
+        ComponentDto compo = ComponentDto.builder().id(1l).functionalAreas(Arrays.asList(fa)).build();
+        fa.setComponents(Arrays.asList(compo));
+        return List.of(fa);
     }
 
 }

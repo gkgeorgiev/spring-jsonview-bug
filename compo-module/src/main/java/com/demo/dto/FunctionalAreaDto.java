@@ -1,8 +1,6 @@
 
 package com.demo.dto;
 
-import com.demo.jackson.converter.ProductDomainDtoToBean;
-import com.demo.jackson.converter.UserGroupDtoListToCsvConverter;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonView;
 import java.util.List;

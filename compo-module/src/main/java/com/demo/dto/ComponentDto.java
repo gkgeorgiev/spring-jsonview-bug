@@ -15,7 +15,6 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonFilter(EXTERNAL_USERS_FILTER)
 public class ComponentDto {
 
   @JsonView(Views.Basic.class)

@@ -16,14 +16,16 @@ apply plugin: 'java'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
-
+repositories {
+		mavenCentral()
+	}
 
 sourceCompatibility = JavaVersion.VERSION_11
 targetCompatibility = JavaVersion.VERSION_11
 
 dependencies {
 	implementation 'org.apache.commons:commons-csv:1.8'
-
+	implementation "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
 	implementation "org.springframework.data:spring-data-envers:2.5.10"
 
 	implementation 'javax.validation:validation-api:2.0.1.Final'
@@ -47,8 +49,7 @@ dependencies {
 
 
 bootRun {
-	jvmArgs "-Dspring.profiles.active=${project.property('spring.profiles.active')}",
-			'-Dsecurity.enable-csrf=false'
+	jvmArgs '-Dsecurity.enable-csrf=false'
 			//'-Djavax.net.debug=all', troubleshoot SSL problems
 			//DEBUG CONFIG '-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=*:5005'
 }
